@@ -1,10 +1,11 @@
 require 'rails/railtie'
-require 'action_view/base'
 
 module BestInPlace
   class Railtie < ::Rails::Railtie #:nodoc:
-    config.after_initialize do
-      BestInPlace::ViewHelpers = ActionView::Base.new
+    initializer 'best_in_place.view_helpers' do
+      ActiveSupport.on_load(:action_view) do
+        include BestInPlace::BestInPlaceHelpers
+      end
     end
   end
 end
