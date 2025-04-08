@@ -1,4 +1,5 @@
 require 'rails/railtie'
+require_relative '../best_in_place/helpers'
 
 module BestInPlace
   class Railtie < ::Rails::Railtie #:nodoc:
